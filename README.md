@@ -90,4 +90,4 @@ This project is open source and available under the [GNU General Public License 
 
 Victor - Alpherg_zhou@foxmail.com
 
-Project Link: [[https://zhoucourier.github.io/](https://zhoucourier.github.io/)]
+Project Link: [https://zhoucourier.github.io/](https://zhoucourier.github.io/)
