@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>encoding</title>
+    <link href="/2024/09/26/encoding/"/>
+    <url>/2024/09/26/encoding/</url>
+    
+    <content type="html"><![CDATA[<p>hexo clean</p><p>hexo g -d</p><p>hexo s</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2024/09/26/hello-world/"/>
+    <url>/2024/09/26/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start">Quick Start</h2><h3 id="Create-a-new-post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Mac 安装Node.js 20 后`node -v` 和 `npm -v`找不到的解决方案</title>
+    <link href="/2024/09/21/node.js%20installation/"/>
+    <url>/2024/09/21/node.js%20installation/</url>
+    
+    <content type="html"><![CDATA[<h1>Mac 安装Node.js 20 后<code>node -v</code> 和 <code>npm -v</code>找不到的解决方案</h1><p>根据你提供的信息，我们可以看到 Node.js 20 确实已经成功安装在你的系统上。问题在于它是以 “keg-only” 的方式安装的，这意味着它没有被自动链接到你的系统路径中。让我们按照 Homebrew 的建议来解决这个问题：</p><ol><li><p>首先，让我们将 Node.js 20 添加到你的 PATH 中。在终端中运行以下命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;export PATH=&quot;/opt/homebrew/opt/node@20/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.zshrc<br></code></pre></td></tr></table></figure><p>这会将必要的路径添加到你的 zsh 配置文件中。</p></li><li><p>然后，重新加载你的 zsh 配置文件：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ~/.zshrc<br></code></pre></td></tr></table></figure></li><li><p>现在，尝试再次运行 <code>node -v</code> 和 <code>npm -v</code>。它们应该能正常工作了。</p></li></ol><p>如果你在未来需要编译依赖 Node.js 的软件，你可能还需要设置以下环境变量。你可以将这些也添加到你的 <code>~/.zshrc</code> 文件中：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;export LDFLAGS=&quot;-L/opt/homebrew/opt/node@20/lib&quot;&#x27;</span> &gt;&gt; ~/.zshrc<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;export CPPFLAGS=&quot;-I/opt/homebrew/opt/node@20/include&quot;&#x27;</span> &gt;&gt; ~/.zshrc<br></code></pre></td></tr></table></figure><p>然后再次运行 <code>source ~/.zshrc</code> 来使这些更改生效。</p><p>如果在执行这些步骤后仍然遇到问题，你可以尝试强制链接 Node.js：</p><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">brew link --force <span class="hljs-keyword">node</span><span class="hljs-title">@20</span><br></code></pre></td></tr></table></figure><p>这应该能解决你的问题。如果还有任何疑问或者这些步骤不起作用，请告诉我，我会很乐意继续帮助你。</p><p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>E</mi><mo>=</mo><mi>m</mi><msup><mi>c</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">E=mc^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord mathnormal">m</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p><pre><code class="mermaid" >ganttdateFormat  YYYY-MM-DDtitle Adding GANTT diagram to mermaidsection A sectionCompleted task            :done,    des1, 2014-01-06,2014-01-08Active task               :active,  des2, 2014-01-09, 3dFuture task               :         des3, after des2, 5dFuture task2               :         des4, after des3, 5d</code></pre><pre><code class="language-mermaid">classDiagramClass01 &lt;|-- AveryLongClass : CoolClass03 *-- Class04Class05 o-- Class06Class07 .. Class08Class09 --&gt; C2 : Where am i?Class09 --* C3Class09 --|&gt; Class07Class07 : equals()Class07 : Object[] elementDataClass01 : size()Class01 : int chimpClass01 : int gorillaClass08 &lt;--&gt; C2: Cool label</code></pre>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
