@@ -1,0 +1,54 @@
+/* 代码块折叠样式 */
+pre {
+    position: relative;
+    margin: 1em 0;
+    border-radius: 4px;
+    background: #f6f8fa;
+    transition: all 0.3s ease;
+}
+
+/* 修复行号溢出问题 */
+pre .line-numbers-rows {
+    max-height: inherit !important;
+    overflow: hidden;
+}
+
+/* 确保代码和行号同步折叠 */
+pre[style*="max-height"] .line-numbers-rows {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-height: 300px !important;
+}
+
+.code-expand-btn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px 0;
+    text-align: center;
+    color: #666;
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.05) 100%);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;  /* 确保按钮在最上层 */
+}
+
+.code-expand-btn:hover {
+    color: #333;
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.1) 100%);
+}
+
+/* 深色模式适配 */
+@media (prefers-color-scheme: dark) {
+    .code-expand-btn {
+        color: #aaa;
+        background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.05) 100%);
+    }
+    
+    .code-expand-btn:hover {
+        color: #fff;
+        background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.1) 100%);
+    }
+}
